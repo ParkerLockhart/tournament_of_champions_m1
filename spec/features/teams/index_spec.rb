@@ -14,9 +14,12 @@ RSpec.describe 'teams index page' do
   let!(:player_2) {team_1.players.create(name: "Rob", age: 21)}
   let!(:player_3) {team_2.players.create(name: "Tim", age: 24)}
   let!(:player_4) {team_2.players.create(name: "Sam", age: 23)}
+  let!(:player_5) {team_4.players.create(name: "Taylor", age: 32)}
+  let!(:player_6) {team_4.players.create(name: "Jeff", age: 34)}
+
 
   before(:each) do
-    visit "competition_teams_path(competition_1)"
+    visit competition_teams_path(competition_1)
   end
 
   it 'shows all teams registered' do
@@ -27,20 +30,20 @@ RSpec.describe 'teams index page' do
   end
 
   it 'shows players average age for each team' do
+    save_and_open_page
     within "#team-#{team_1.id}" do
-      expect(page).to have_content()
+      expect(page).to have_content(21)
     end
     within "#team-#{team_2.id}" do
-      expect(page).to have_content()
+      expect(page).to have_content(23)
     end
     within "#team-#{team_4.id}" do
-      expect(page).to have_content()
+      expect(page).to have_content(33)
     end
   end
 
   it 'shows teams in order of average player age, high to low' do
-    expect().to appear_before()
-    expect().to appear_before()
-    expect().to appear_before()
+    expect(team_4.nickname).to appear_before(team_2.nickname)
+    expect(team_2.nickname).to appear_before(team_1.nickname)
   end
-end 
+end
