@@ -7,4 +7,5 @@
   </div>
 <% end %>
 <hr>
-Average age of players competing: <%= @competition.players_avg_age %>
+Average age of players competing: <%= @competition.players_avg_age %><br>
+<h2><%= link_to "Register New Team", "/competitions/#{@competition.id}/teams/new" %></h2>
