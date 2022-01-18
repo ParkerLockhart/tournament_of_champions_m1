@@ -1,3 +1,8 @@
 <h1>Teams Registered for <%= @competition.location %> <%= @competition.name %></h1>
 
- 
+<% @competition.teams_by_avg_player_age.each do |team| %>
+  <div id="team-<%= team.id %>">
+    <%= team.hometown %> <%= team.nickname %><br>
+    Average age of players: <%= team.player_age.to_i %>
+  </div>
+<% end %>
