@@ -33,7 +33,6 @@ RSpec.describe Competition, type: :model do
 
     describe 'teams_by_avg_player_age' do
       it 'returns teams and avg player age in order of highest to lowest' do
-        # binding.pry
         expect(competition_1.teams_by_avg_player_age).to eq([team_4, team_2, team_1])
       end
     end
